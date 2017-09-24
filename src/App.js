@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gpio from 'gpio';
 
 var gpio22 = gpio.export(22, {direction: "out"});
+    gpio22.set(0);
 
 class App extends Component {
   
