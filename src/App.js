@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import gpio from 'gpio';
 
-var gpio22 = gpio.export(22, {direction: "out"});
-    gpio22.set(0);
+// Flashing lights if LED connected to GPIO22 
+var gpio22 = gpio.export(22, {
+  ready: function() {
+     intervalTimer = setInterval(function() {
+        gpio22.set();
+        setTimeout(function() { gpio22.reset(); }, 500);
+     }, 1000);
+  }
+});
 
 class App extends Component {
   
